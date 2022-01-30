@@ -32,7 +32,7 @@ app.get('/posts/:id', (request, response) => {
 // POST
 // Add a new post
 app.post('/posts', (request, response) => {
-  pool.query('INSERT INTO posts SET text', request, (error, result) => {
+  pool.query('INSERT INTO posts SET text', request.body, (error, result) => {
     if (error) return response.send(error);
 
     response.status(201).send(`Пост добавлен, ID: ${result.insertId}`);
